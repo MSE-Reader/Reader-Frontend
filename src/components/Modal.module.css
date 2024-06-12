@@ -1,0 +1,78 @@
+.modalContent {
+    display: flex; 
+    width: 1600px; 
+    height: 800px;
+    background-color: #ffff;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1001; /* modalOverlay보다 앞에 표시 */
+}
+  /*z-index는 화면상에 뭐가 먼저 보일지 결정하는거. 값이 클수록 상위 위치. 따라서 modalContent가
+  모달 오버레이보다 위에 위치하게 된다. */
+  
+.leftContainer, .rightContainer {
+    width: 800px; 
+    height: 800px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.leftContainer {
+    position: relative;
+    background-color: #ffff; 
+}
+
+.leftContainer img {
+  width: 800px;
+  height: 800px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+.rightContainer {
+  position: relative;
+  margin-left: 40px;
+  background-color: #e9e9e9;
+}  
+
+  .canvasOverlay {
+    position: absolute;
+    background-color: #e8f1c780;
+    top: 0;
+    left: 0;
+    width: 800px;
+    height: 800px;
+    z-index: 1002; /* 이미지 위에 canvas가 오도록 z-index 설정 */
+  }
+
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .closeButton {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    border: none;
+    background-color: transparent;
+    margin-top: auto; 
+    cursor: pointer;
+  }
+  
+  .closeButton img {
+    width: 50px;
+    height: 50px;
+  }
