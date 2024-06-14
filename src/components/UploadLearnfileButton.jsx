@@ -1,10 +1,11 @@
 import React, { useState, useRef } from "react";
+import { BeatLoader } from 'react-spinners';
 import styles from "./UploadLearnfileButton.module.css";
 
 const UploadLearnfileButton = () => {
   const fileInputRef = useRef(null);
-
   const [files, setFiles] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleFileChange = (event) => {
     const selectedFiles = event.target.files;
@@ -14,6 +15,7 @@ const UploadLearnfileButton = () => {
   };
 
   const handleUpload = async () => {
+    setLoading(true);
     const accessToken = localStorage.getItem("accessToken");
     const userID = localStorage.getItem("userID");
     const formData = new FormData();
@@ -44,6 +46,9 @@ const UploadLearnfileButton = () => {
     } catch (error) {
       console.error("업로드 중 오류 발생:", error);
       alert("업로드 중 오류가 발생했습니다.");
+    } 
+    finally {
+      setLoading(false);
     }
   };
 
@@ -68,6 +73,7 @@ const UploadLearnfileButton = () => {
           <button className={styles.btn} onClick={handleUpload}>
             업로드
           </button>
+          {loading && <BeatLoader />}
         </>
       )}
     </div>

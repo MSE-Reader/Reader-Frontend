@@ -122,3 +122,11 @@ h1 {
   height: 80%;
   object-fit: cover;
 }
+
+.clock {
+  width: 48px;
+  position: fixed;
+  top: 97px;
+  right: 340px;
+  cursor: pointer;
+}

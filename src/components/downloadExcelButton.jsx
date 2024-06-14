@@ -1,18 +1,25 @@
-import React from "react";
-import styles from "../pages/MainPage.module.css";
+import React, { useState } from "react";
+import { BeatLoader } from 'react-spinners';
+import styles from "./UploadLearnfileButton.module.css";
 
 const serverURL = "http://100.25.242.208:8080/";
 const userID = localStorage.getItem("userID");
 
-class DownloadExcelButton extends React.Component {
-  handleClick = async () => {
+const DownloadExcelButton = () => {
+  const [loading, setLoading] = useState(false);
+  
+  const handleClick = async () => {
+    setLoading(true);
     try {
+      const formBody = new URLSearchParams();
+      formBody.append("user_id", userID);
+
       const response = await fetch(`${serverURL}ai/predict`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: JSON.stringify({ user_id: userID }),
+        body: formBody.toString(),
       });
 
       const blob = await response.blob();
@@ -25,16 +32,19 @@ class DownloadExcelButton extends React.Component {
       a.remove();
     } catch (error) {
       console.error("Error:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
-  render() {
-    return (
-      <button className={`${styles.btn}`} onClick={this.handleClick}>
+  return (
+    <div>
+      <button className={`${styles.btn}`} onClick={handleClick} disabled={loading}>
         추출하기
       </button>
-    );
-  }
-}
+      {loading && <BeatLoader />}
+    </div>
+  );
+};
 
 export default DownloadExcelButton;
