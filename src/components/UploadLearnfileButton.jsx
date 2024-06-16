@@ -35,7 +35,7 @@ const UploadLearnfileButton = () => {
           },
           body: formData,
           redirect: "follow",
-          mode: "no-cors",
+          //mode: "no-cors",
         }
       );
 

@@ -54,7 +54,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
         const uniqueKey = `image-widget-${Date.now()}`;
         const imgMessage = {
           type: "bot",
-          message: "그래프는 다음과 같습니다.",
+          message: "이미지는 다음과 같습니다.",
           widget: "imageWidget",
           widgetParams: { src: imageurl },
           id: uniqueKey,
@@ -64,6 +64,15 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
           ...prev,
           messages: [...prev.messages, imgMessage],
           imageurl,
+        }));
+      }
+
+      if (reply) {
+        const botMessage = createChatBotMessage(reply);
+
+        setState((prev) => ({
+          ...prev,
+          messages: [...prev.messages, botMessage],
         }));
       }
     } catch (error) {
