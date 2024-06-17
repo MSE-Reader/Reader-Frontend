@@ -43,12 +43,6 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
       console.log("Reply:", reply);
       //console.log("Image:", imageurl);
 
-      const botMessage = createChatBotMessage(reply);
-
-      setState((prev) => ({
-        ...prev,
-        messages: [...prev.messages, botMessage],
-      }));
 
       if (imageurl) {
         const uniqueKey = `image-widget-${Date.now()}`;
