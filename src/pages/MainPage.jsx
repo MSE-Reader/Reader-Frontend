@@ -15,6 +15,7 @@ import ActionProvider from '../chatbot/ActionProvider';
 import './chatbot.css';
 
 import chatbot_icon from '../img/free-icon-chat.png';
+import question from '../img/question.png';
 
 
 const MainPage = () => {
@@ -93,10 +94,15 @@ const MainPage = () => {
       alert("로그인 후 이용해주세요.");
     }
 
+    const handleQuestionClick = () => {
+      navigate('/howtouse');
+    }
+
       return (
         <div className={styles.container}>
           <div className="header">
             <button className={`${styles.mainbtn}`} onClick={refreshPage}><h1>Reader.</h1></button>
+            <img src={question} alt="?" className={styles.question} onClick={handleQuestionClick}/>
             {isLoggedIn ? ( 
               <>
               <div>

@@ -6,6 +6,7 @@ import MainPage from './MainPage';
 import LearnPage from './Learn';
 //import Chat  from './Chat.jsx';
 import Extract from './Extract.jsx';
+import HowToUse from './HowToUse.jsx';
 
 const Home = () => (
   <div>
@@ -25,6 +26,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           {/*<Route path="/chatbot" element={<Chat />} />*/}
           <Route path="/extract" element={<Extract />} />
+          <Route path="/howtouse" element={<HowToUse />} />
         </Routes>
       </div>
     </Router>
